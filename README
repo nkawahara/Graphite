@@ -2,6 +2,7 @@ This code is forked by https://github.com/mit-carbon/Graphite .
 
 mitの開発したマルチコアシミュレータである、Graphiteへ機能追加を目的としてフォークした。
 以下の機能を実装したい。
+* 追加のワークロード
 * ネットワークの自由な形状の定義
 
 **** READ ME の原文****
