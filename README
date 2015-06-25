@@ -1,3 +1,10 @@
+This code is forked by https://github.com/mit-carbon/Graphite .
+
+mitの開発したマルチコアシミュレータである、Graphiteへ機能追加を目的としてフォークした。
+以下の機能を実装したい。
+* ネットワークの自由な形状の定義
+
+**** READ ME の原文****
 This is the source code for the Graphite multicore simulator developed
 by the Carbon research group in MIT's Computer Science and Artificial
 Intelligence Laboratory (CSAIL).  Please refer to the LICENSE file in
@@ -16,3 +23,5 @@ III, Nathan Beckmann, Christopher Celio, Jonathan Eastep and Anant
 Agarwal, "Graphite: A Distributed Parallel Simulator for Multicores"
 The 16th IEEE International Symposium on High-Performance Computer
 Architecture (HPCA), Jan 2010.
+
+****
