@@ -2,7 +2,7 @@ TARGET = p_sort
 SOURCES = p_sort.cc
 
 # Network Node ful Cores size ( is not worker Core 
-CORES ?= 14
+CORES ?= 16
 #CORES ?= 258
 #CORES ?= 130
 
