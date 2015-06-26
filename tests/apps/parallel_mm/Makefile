@@ -1,8 +1,8 @@
-GET = p_mm
+TARGET = p_mm
 SOURCES = p_mm.cc
 
 #CORES ?= 256
-CORES ?= 16
+CORES ?= 14
 #CORES ?= 130
 APP_FLAGS ?= $(CORES)
 ENABLE_SM ?= true
