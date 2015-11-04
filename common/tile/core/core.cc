@@ -55,8 +55,9 @@ Core::~Core()
    if (_pin_memory_manager)
       delete _pin_memory_manager;
 
+   // This is caused bug?
    if (_clock_skew_management_client)
-      delete _clock_skew_management_client;
+      delete &_clock_skew_management_client;
 
    delete _syscall_model;
    delete _sync_client;
