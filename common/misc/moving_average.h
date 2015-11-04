@@ -98,7 +98,7 @@ class MovingArithmeticMean : public MovingAverage<T>
             _arithmetic_mean = (_arithmetic_mean * curr_window_size + next_num) / (curr_window_size + 1);
          }
          
-         addToWindow(next_num);
+         this->addToWindow(next_num);
 
          return (T) _arithmetic_mean;
       }
@@ -129,7 +129,7 @@ class MovingGeometricMean : public MovingAverage<T>
             _geometric_mean = pow( pow(_geometric_mean, curr_window_size) * next_num, (1.0 / (curr_window_size+1)) );
          }
 
-         addToWindow(next_num);
+         this->addToWindow(next_num);
          
          return (T) _geometric_mean; 
       }
@@ -146,7 +146,7 @@ class MovingMedian : public MovingAverage<T>
       T compute(T next_num)
       {
          // FIXME: Might want to sort this before returning any value
-         addToWindow(next_num);
+         this->addToWindow(next_num);
         
          UInt32 curr_window_size = (this->_curr_window_back - this->_curr_window_front)._value;
          UInt32 median_index = (this->_curr_window_front + (curr_window_size / 2))._value;
