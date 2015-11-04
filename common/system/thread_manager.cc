@@ -123,7 +123,7 @@ void ThreadManager::onThreadStart(ThreadSpawnRequest *req)
 
    // send message to master process to update global thread state 
    Network *net = core->getTile()->getNetwork();
-   SInt32 msg[] = { MCP_MESSAGE_THREAD_START, core->getId().tile_id, core->getId().core_type, m_tile_manager->getCurrentThreadIndex()};
+   SInt32 msg[] = { MCP_MESSAGE_THREAD_START, core->getId().tile_id, static_cast<SInt32>(core->getId().core_type), m_tile_manager->getCurrentThreadIndex()};
    net->netSend(Config::getSingleton()->getMCPCoreId(),
                 MCP_REQUEST_TYPE,
                 msg,
@@ -162,7 +162,7 @@ void ThreadManager::onThreadExit()
    core_model->recomputeAverageFrequency(core->getFrequency());
 
    // send message to master process to update thread state
-   SInt32 msg[] = { MCP_MESSAGE_THREAD_EXIT, core->getId().tile_id, core->getId().core_type, thread_idx };
+   SInt32 msg[] = { MCP_MESSAGE_THREAD_EXIT, core->getId().tile_id, static_cast<SInt32>(core->getId().core_type), thread_idx };
 
    // update global thread state
    net->netSend(Config::getSingleton()->getMCPCoreId(),
@@ -407,7 +407,7 @@ void ThreadManager::masterSpawnThreadReply(ThreadSpawnRequest *req)
              req->requester.tile_id, req->requester.core_type, req->requester_tidx);
    resumeThread(req->requester);
 
-   SInt32 msg[] = { req->destination.tile_id, req->destination.core_type, req->destination_tidx, req->destination_tid };
+   SInt32 msg[] = { req->destination.tile_id, static_cast<SInt32>(req->destination.core_type), req->destination_tidx, req->destination_tid };
 
    Core *core = m_tile_manager->getCurrentCore();
    core->getTile()->getNetwork()->netSend(req->requester, 
@@ -624,9 +624,9 @@ void ThreadManager::setOSTid(core_id_t core_id, thread_id_t thread_idx, pid_t os
    m_tid_map_lock.acquire();
    SInt32 req[] = { MCP_MESSAGE_THREAD_SET_OS_TID,
                    core_id.tile_id,
-                   core_id.core_type,
+                   static_cast<SInt32>(core_id.core_type),
                    thread_idx,
-                   os_tid };
+                   os_tid};
 
    Network *net = m_tile_manager->getCurrentCore()->getTile()->getNetwork();
 
@@ -650,7 +650,7 @@ void ThreadManager::queryThreadIndex(thread_id_t thread_id, core_id_t &core_id, 
    m_tid_map_lock.acquire();
    SInt32 req[] = { MCP_MESSAGE_QUERY_THREAD_INDEX,
                   m_tile_manager->getCurrentCoreID().tile_id,
-                  m_tile_manager->getCurrentCoreID().core_type,
+                  static_cast<SInt32>(m_tile_manager->getCurrentCoreID().core_type),
                   thread_id};
 
    Network *net = m_tile_manager->getCurrentCore()->getTile()->getNetwork();
