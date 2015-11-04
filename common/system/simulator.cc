@@ -192,7 +192,7 @@ Simulator::~Simulator()
    delete m_sim_thread_manager;
    delete m_performance_counter_manager;
    delete m_thread_manager;
-   delete m_thread_scheduler;
+   delete [] m_thread_scheduler;
    delete m_tile_manager;
    m_tile_manager = NULL;
    delete m_transport;
