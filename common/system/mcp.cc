@@ -30,7 +30,7 @@ MCP::MCP(Network & network)
 MCP::~MCP()
 {
    if (m_clock_skew_management_server)
-      delete &m_clock_skew_management_server;
+      delete [] m_clock_skew_management_server;
    delete [] m_scratch;
 }
 

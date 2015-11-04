@@ -187,7 +187,7 @@ Simulator::~Simulator()
   
    // Clock Skew Manager 
    if (m_clock_skew_management_manager)
-      delete m_clock_skew_management_manager;
+      delete [] m_clock_skew_management_manager;
 
    delete m_sim_thread_manager;
    delete m_performance_counter_manager;

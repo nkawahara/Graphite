@@ -57,8 +57,8 @@ Core::~Core()
 
    // This is caused bug?
    if (_clock_skew_management_client)
-      delete &_clock_skew_management_client;
-
+      delete [] _clock_skew_management_client;
+      
    delete _syscall_model;
    delete _sync_client;
    delete _core_model;
